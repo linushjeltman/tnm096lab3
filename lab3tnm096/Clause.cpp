@@ -5,6 +5,18 @@
 #include <algorithm>
 
 
+clause::clause() 
+{
+}
+
+clause::clause(const clause& rhs): n(rhs.n), p(rhs.p)
+{
+}
+
+clause::clause(const std::set<char>& p, const std::set<char>& n) : p(p), n(n)
+{
+}
+
 // Function to insert new litterals to a clause
 void clause::insertLiteral(const std::string& elements)
 {
@@ -17,6 +29,16 @@ void clause::insertLiteral(const std::string& elements)
 			this->p.insert(*it);
 		}
 	}
+}
+
+void clause::removeFirstPositiveLitteral()
+{
+	p.erase(this->p.begin());
+}
+
+void clause::removeFirstNegativeLitteral()
+{
+	n.erase(this->n.begin());
 }
 
 // Prints a clause
@@ -33,22 +55,15 @@ void clause::print()
 	}
 	std::cout << std::endl << "------" << std::endl;
 }
-void clause::intersection(const std::set<char>& rhsP)
-{
-	if (!this->n.empty() && !rhsP.empty()) {
-		for (auto&& i : rhsP) {
-			if (this->n.find(i) != this->n.end()) {
-				this->np.insert(i);
-			}
-		}
-	}
-	else {
-		std::cout << "Set is empty!" << std::endl;
-	}
-}
 
-std::set<char> clause::getLitterals()
+
+
+const std::set<char> clause::getPositiveLitterals()
 {
-	return std::set<char>();
+	return this->p;
+}
+const std::set<char> clause::getNegativeLitterals()
+{
+	return this->n;
 }
 
