@@ -1,22 +1,4 @@
 ﻿  Source.cpp
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29910\include\xutility(5103,14): error C2672: 'operator __surrogate_func': no matching overloaded function found
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29910\include\xutility(5152): message : see reference to function template instantiation 'bool std::equal<_InIt1,_InIt2,std::equal_to<void>>(const _InIt1,const _InIt1,const _InIt2,_Pr)' being compiled
-          with
-          [
-              _InIt1=const clause *,
-              _InIt2=const clause *,
-              _Pr=std::equal_to<void>
-          ]
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29910\include\vector(1774): message : see reference to function template instantiation 'bool std::equal<const clause*,const clause*>(const _InIt1,const _InIt1,const _InIt2)' being compiled
-          with
-          [
-              _InIt1=const clause *,
-              _InIt2=const clause *
-          ]
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29910\include\vector(1779): message : see reference to function template instantiation 'bool std::operator ==<clause,std::allocator<clause>>(const std::vector<clause,std::allocator<clause>> &,const std::vector<clause,std::allocator<clause>> &)' being compiled
-C:\Users\Linus\source\repos\lab3tnm096\lab3tnm096\Source.cpp(184): message : see reference to function template instantiation 'bool std::operator !=<clause,std::allocator<clause>>(const std::vector<clause,std::allocator<clause>> &,const std::vector<clause,std::allocator<clause>> &)' being compiled
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29910\include\xutility(5103,1): error C2893: Failed to specialize function template 'unknown-type std::equal_to<void>::operator ()(_Ty1 &&,_Ty2 &&) noexcept(<expr>) const'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29910\include\xstddef(198): message : see declaration of 'std::equal_to<void>::operator ()'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29910\include\xutility(5103,1): message : With the following template arguments:
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29910\include\xutility(5103,1): message : '_Ty1=const clause &'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29910\include\xutility(5103,1): message : '_Ty2=const clause &'
+C:\Users\Linus\source\repos\lab3tnm096\lab3tnm096\Source.cpp(180,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Linus\source\repos\lab3tnm096\lab3tnm096\Source.cpp(181,23): warning C4018: '<': signed/unsigned mismatch
+  lab3tnm096.vcxproj -> C:\Users\Linus\source\repos\lab3tnm096\Debug\lab3tnm096.exe

@@ -11,6 +11,7 @@ clause::clause()
 
 clause::clause(const clause& rhs) : n(rhs.n), p(rhs.p)
 {
+	//std::cout << "Copy!" << std::endl;
 }
 
 clause::clause(const std::set<char>& p, const std::set<char>& n) : p(p), n(n)
@@ -50,18 +51,19 @@ void clause::removeNegativeLitteral(const char& temp)
 // Prints a clause
 void clause::print()
 {
-	std::cout << "P: ";
-	for (auto&& i : this->p) {
-		std::cout << i << " ";
-	}
+	if (!this->isEmpty()) {
+		std::cout << "P: ";
+		for (auto&& i : this->p) {
+			std::cout << i << " ";
+		}
 
-	std::cout << std::endl << "N: ";
-	for (auto&& i : this->n) {
-		std::cout << i << " ";
+		std::cout << std::endl << "N: ";
+		for (auto&& i : this->n) {
+			std::cout << i << " ";
+		}
+		std::cout << std::endl << "------" << std::endl;
 	}
-	std::cout << std::endl << "------" << std::endl;
 }
-
 
 
 const std::set<char> clause::getPositiveLitterals()
@@ -105,7 +107,7 @@ bool clause::isSubset(const clause& rhs)
 		}
 	}
 
-	auto it2= lhsn.begin();
+	auto it2 = lhsn.begin();
 	while (it2 != lhsn.end()) {
 		if (rhs.n.find(*it2) != rhs.n.end()) {
 			return false;
