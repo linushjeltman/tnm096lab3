@@ -24,6 +24,7 @@ public:
 	bool isSubset(const clause& rhs);
 	bool operator==(const clause& rhs);
 	bool operator!=(const clause& rhs);
+	int size();
 };
 
 
