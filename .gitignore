@@ -1,0 +1,6 @@
+# Ignore the following.
+
+CMakeLists.txt
+cmake-build-debug/
+lab3tnm096/
+test.txt
