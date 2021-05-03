@@ -1,1 +1,0 @@
-/Library/Developer/CommandLineTools/usr/bin/c++  -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/tnm096lab3.dir/lab3tnm096/Clause.cpp.o CMakeFiles/tnm096lab3.dir/lab3tnm096/Source.cpp.o  -o tnm096lab3 
