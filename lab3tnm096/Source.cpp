@@ -17,7 +17,7 @@ void printLitterals(const std::set<char> temp);
 bool operator!=(std::vector<clause> lhs, std::vector<clause> rhs);
 
 int main() {
-	clause c1, c2, c3, c4, c5;
+	clause c1, c2, c3, c4, c5, c6;
 
 	// Example 1, 
 	std::string c1elements{ "-s-pi" };
@@ -25,20 +25,23 @@ int main() {
 	std::string c3elements{ "-mp" };
 	std::string c4elements{ "-m-i" };
 	std::string c5elements{ "m" };
+	std::string c6elements{ "spc" };
 
 	c1.insertLiteral(c1elements);
 	c2.insertLiteral(c2elements);
 	c3.insertLiteral(c3elements);
 	c4.insertLiteral(c4elements);
 	c5.insertLiteral(c5elements);
+	c6.insertLiteral(c6elements);
 
-	//c1.print();
-	//c2.print();
-	//c3.print();
-	//c4.print();
-	//c5.print();
+	c1.print();
+	c2.print();
+	c3.print();
+	c4.print();
+	c5.print();
+	c6.print();
 
-	// Resolution
+	//Resolution
 	//auto result = resolution(c4, c5);
 	//std::cout << std::endl;
 	//result.print();
@@ -50,16 +53,17 @@ int main() {
 	knowledgeBase.emplace_back(c3);
 	knowledgeBase.emplace_back(c4);
 	knowledgeBase.emplace_back(c5);
+	knowledgeBase.emplace_back(c6);
 
 
-	std::cout << c3.isSubset(c4);
+//	std::cout << c3.isSubset(c4);
 
 	// Solver
 	knowledgeBase = solver(knowledgeBase);
 
 	std::cout << "Klar\n";
 
-	std::cout << "Size " << knowledgeBase.size() << std::endl;
+	//std::cout << "Size " << knowledgeBase.size() << std::endl;
 	for (auto&& i : knowledgeBase) {
 		i.print();
 	}
@@ -70,6 +74,15 @@ clause resolution(clause a, clause b)
 {
 	std::set<char> ApBn = intersection(a.getPositiveLitterals(), b.getNegativeLitterals());
 	std::set<char> AnBp = intersection(a.getNegativeLitterals(), b.getPositiveLitterals());
+
+	std::cout << "ApBn: \n";
+    for (auto iterator = ApBn.begin(); iterator != ApBn.end(); ++iterator) {
+        std::cout << *iterator;
+    }
+
+    std::cout << "\nAnBp: \n";
+
+
 
 	clause c;
 	clause empty;
@@ -153,7 +166,7 @@ void printLitterals(const std::set<char> temp)
 	std::cout << "\n";
 }
 
-// Uppåt är ok
+// Uppï¿½t ï¿½r ok
 
 bool operator!=(std::vector<clause> lhs, std::vector<clause> rhs)
 {
@@ -177,7 +190,7 @@ std::vector<clause> solver(std::vector<clause>& knowledgeBase)
 	std::vector<clause> KB{};
 	while (KB.size() != knowledgeBase.size())
 	{
-		std::cout << "Sizes: " << KB.size() << " & " << knowledgeBase.size() << std::endl;
+		//std::cout << "Sizes: " << KB.size() << " & " << knowledgeBase.size() << std::endl;
 		KB = knowledgeBase;
 		clause C{};
 		int count{};
@@ -191,6 +204,8 @@ std::vector<clause> solver(std::vector<clause>& knowledgeBase)
 				// KIKa
 				if (!(C.getPositiveLitterals().empty() && C.getNegativeLitterals().empty())) {
 					if (std::find(S.begin(), S.end(), C) == S.end()) {
+					    std::cout << "Pushing: \n";
+					    C.print();
 						S.emplace_back(C);
 					}
 				}
@@ -224,9 +239,7 @@ std::vector<clause> solver(std::vector<clause>& knowledgeBase)
 		for (auto&& i : knowledgeBase) {
 			i.print();
 		}
-
 	}
-
 	return knowledgeBase;
 }
 
@@ -246,15 +259,16 @@ std::vector<clause> incorporate_clause(clause& a, std::vector<clause>& knowledge
 	//	return knowledgeBase;
 	//}
 
-	//Byt looptyp, programmet kommer inte längre än till slutet av loopen...
 	auto it1 = knowledgeBase.begin();
+
 
 	for (unsigned i{}; i < knowledgeBase.size(); i++) {
 		if (knowledgeBase[i].isSubset(a)) {
 			//std::cout << "TEST1" << std::endl;
 			return knowledgeBase;
 		}
-		else if (a.isSubset(knowledgeBase[i]) /*&& a.size() != knowledgeBase[i].size()*/) {
+		else if (a.isSubset(knowledgeBase[i]) /* && a.size() != knowledgeBase[i].size()*/) {
+	        std::cout << "A size: " << a.size();// << " KB size: "; //<<knowledgeBase[i].size() << std::endl;
 			std::cout << "TEST2" << std::endl;
 			knowledgeBase.erase(it1);
 		}
