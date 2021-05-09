@@ -14,11 +14,11 @@ public:
 	clause(const clause& rhs);
 	clause(const std::set<char>& p, const std::set<char>& n);
 	void insertLiteral(const std::string &elements);
-	void removePositiveLitteral(const char& temp);
-	void removeNegativeLitteral(const char& temp);
+	void removePositiveLiteral(const char& temp);
+	void removeNegativeLiteral(const char& temp);
 	void print();
-	const std::set<char> getPositiveLitterals();
-	const std::set<char> getNegativeLitterals();
+	const std::set<char> getPositiveLiterals();
+	const std::set<char> getNegativeLiterals();
 	void combineClauses(const clause& rhs);
 	bool isEmpty();
 	bool isSubset(const clause& rhs);

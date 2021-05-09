@@ -32,7 +32,7 @@ void clause::insertLiteral(const std::string& elements)
 	}
 }
 
-void clause::removePositiveLitteral(const char& temp)
+void clause::removePositiveLiteral(const char& temp)
 {
 	auto it = p.find(temp);
 	if (it != p.end()) {
@@ -40,7 +40,7 @@ void clause::removePositiveLitteral(const char& temp)
 	}
 }
 
-void clause::removeNegativeLitteral(const char& temp)
+void clause::removeNegativeLiteral(const char& temp)
 {
 	auto it = this->n.find(temp);
 	if (it != n.end()) {
@@ -66,11 +66,11 @@ void clause::print()
 }
 
 
-const std::set<char> clause::getPositiveLitterals()
+const std::set<char> clause::getPositiveLiterals()
 {
 	return this->p;
 }
-const std::set<char> clause::getNegativeLitterals()
+const std::set<char> clause::getNegativeLiterals()
 {
 	return this->n;
 }
@@ -91,19 +91,14 @@ void clause::combineClauses(const clause& rhs)
 
 bool clause::isEmpty()
 {
-	if (this->getNegativeLitterals().empty()) {
-		if(this->getPositiveLitterals().empty()) return true;
+	if (this->getNegativeLiterals().empty()) {
+		if(this->getPositiveLiterals().empty()) return true;
 	}
 	return false;
 }
 
 bool clause::isSubset(const clause& rhs)
 {
-
-	/*
-	bool checkSubset(Clause B, Clause A){
-	*/
-
     int counter{0};
 
     for(const auto& i: rhs.p){
@@ -192,6 +187,6 @@ bool clause::operator!=(const clause& rhs)
 
 int clause::size()
 {
-	return this->size();
+   return this->n.size()+this->p.size();
 }
 
